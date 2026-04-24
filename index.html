@@ -1,665 +1,230 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ótica Lenses | Perfeita para a sua visão</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ótica Lenses</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fff;color:#111}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 7%;
+background:#fff;
+position:fixed;
+width:100%;
+top:0;
+z-index:999;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+header img{width:120px}
+nav{display:flex;gap:25px}
+nav a{font-weight:bold;color:#071426}
+nav a:hover{color:#d8a72e}
+
+/* HERO */
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+padding:140px 7% 70px;
+background:#f5f5f5;
+}
+.hero h1{
+font-size:45px;
+color:#071426;
+margin-bottom:20px;
+}
+.hero h1 span{color:#d8a72e}
+.hero p{color:#555;margin-bottom:25px;font-size:18px}
+.hero img{width:100%;height:500px;object-fit:cover}
+
+/* BOTÕES */
+.btn{
+background:#071426;
+color:#fff;
+padding:15px 25px;
+margin-right:10px;
+display:inline-block;
+}
+.btn:hover{background:#d8a72e;color:#071426}
+
+/* MARQUEE */
+.marquee{
+background:#071426;
+color:#fff;
+overflow:hidden;
+padding:10px 0;
+}
+.marquee-content{
+display:flex;
+gap:40px;
+animation:move 15s linear infinite;
+}
+.marquee span{white-space:nowrap}
+@keyframes move{
+from{transform:translateX(100%)}
+to{transform:translateX(-100%)}
+}
+
+/* SECTIONS */
+section{padding:70px 7%}
+.title{text-align:center;margin-bottom:40px}
+.title h2{color:#071426}
+
+/* SERVIÇOS */
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.card{
+background:#fff;
+padding:25px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+.card:hover{transform:translateY(-5px)}
+
+/* SOBRE */
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+.about img{width:100%;height:400px;object-fit:cover}
+
+/* GALERIA */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.gallery img{width:100%;height:250px;object-fit:cover}
+
+/* CONTATO */
+.contact{
+background:#071426;
+color:#fff;
+}
+.contact p{margin:10px 0}
+
+/* FOOTER */
+footer{
+background:#000;
+color:#aaa;
+text-align:center;
+padding:20px;
+}
+
+/* WHATSAPP */
+.whats{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+color:#fff;
+padding:15px;
+border-radius:50px;
+}
+</style>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --azul: #071426;
-      --azul2: #0b1f36;
-      --dourado: #d8a72e;
-      --claro: #f5f5f5;
-      --texto: #555;
-      --escuro: #050b14;
-    }
-
-    body {
-      background: #fff;
-      color: #111;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    header {
-      width: 100%;
-      padding: 14px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      position: fixed;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 3px 18px rgba(0,0,0,.08);
-    }
-
-    header img {
-      width: 125px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    nav a {
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--azul);
-      transition: .3s;
-    }
-
-    nav a:hover {
-      color: var(--dourado);
-    }
-
-    .btn-header {
-      background: var(--azul);
-      color: #fff;
-      padding: 12px 22px;
-      border-radius: 4px;
-    }
-
-    .btn-header:hover {
-      background: var(--dourado);
-      color: var(--azul);
-    }
-
-    .hero {
-      min-height: 100vh;
-      padding: 130px 7% 70px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 45px;
-      background: linear-gradient(90deg, #f7f7f7 0%, #fff 55%, #f1f1f1 100%);
-    }
-
-    .hero-text img {
-      width: 360px;
-      max-width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .tag {
-      color: var(--dourado);
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      line-height: 1.1;
-      color: var(--azul);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: var(--dourado);
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--texto);
-      line-height: 1.7;
-      margin-bottom: 30px;
-      max-width: 620px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--azul);
-      color: #fff;
-      padding: 15px 28px;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: .3s;
-    }
-
-    .btn-primary:hover {
-      background: var(--dourado);
-      color: var(--azul);
-      transform: translateY(-3px);
-    }
-
-    .btn-outline {
-      border: 2px solid var(--azul);
-      color: var(--azul);
-      padding: 13px 28px;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: .3s;
-    }
-
-    .btn-outline:hover {
-      background: var(--azul);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    .hero-img img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      border-radius: 4px;
-      box-shadow: 0 25px 50px rgba(0,0,0,.22);
-    }
-
-    section {
-      padding: 80px 7%;
-    }
-
-    .title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .title span {
-      color: var(--dourado);
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .title h2 {
-      color: var(--azul);
-      font-size: 36px;
-      margin-top: 12px;
-      text-transform: uppercase;
-    }
-
-    .numbers {
-      background: var(--azul);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      padding: 45px 7%;
-      gap: 20px;
-    }
-
-    .number {
-      text-align: center;
-      color: #fff;
-      border-right: 1px solid rgba(255,255,255,.2);
-    }
-
-    .number h3 {
-      color: var(--dourado);
-      font-size: 38px;
-      margin-bottom: 8px;
-    }
-
-    .number p {
-      font-size: 15px;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      align-items: center;
-      background: #fff;
-    }
-
-    .about img {
-      width: 100%;
-      height: 470px;
-      object-fit: cover;
-      border-radius: 4px;
-      box-shadow: 0 18px 35px rgba(0,0,0,.16);
-    }
-
-    .about-text h2 {
-      color: var(--azul);
-      font-size: 38px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .about-text p {
-      color: var(--texto);
-      line-height: 1.8;
-      margin-bottom: 16px;
-      font-size: 16px;
-    }
-
-    .services {
-      background: #f6f6f6;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-
-    .service-card {
-      background: #fff;
-      padding: 32px 25px;
-      border-radius: 4px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.08);
-      transition: .3s;
-      border-bottom: 4px solid var(--azul);
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-bottom-color: var(--dourado);
-    }
-
-    .service-card h3 {
-      color: var(--azul);
-      margin-bottom: 15px;
-      font-size: 21px;
-    }
-
-    .service-card p {
-      color: var(--texto);
-      line-height: 1.7;
-    }
-
-    .banner {
-      background:
-        linear-gradient(rgba(7,20,38,.78), rgba(7,20,38,.9)),
-        url("fachada-nova.jpg");
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-      color: #fff;
-      padding: 100px 7%;
-    }
-
-    .banner h2 {
-      font-size: 42px;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
-
-    .banner p {
-      max-width: 780px;
-      margin: 0 auto 28px;
-      line-height: 1.8;
-      font-size: 18px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 4px;
-      transition: .3s;
-      box-shadow: 0 12px 25px rgba(0,0,0,.13);
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.03);
-    }
-
-    .contact {
-      background: var(--azul);
-      color: #fff;
-    }
-
-    .contact .title h2 {
-      color: #fff;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.2fr;
-      gap: 25px;
-    }
-
-    .contact-box {
-      background: rgba(255,255,255,.08);
-      padding: 28px;
-      border-radius: 4px;
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .contact-box img {
-      width: 190px;
-      margin-bottom: 18px;
-    }
-
-    .contact-box h3 {
-      color: var(--dourado);
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-
-    .contact-box p {
-      line-height: 1.7;
-      margin-bottom: 12px;
-      color: #e5e5e5;
-    }
-
-    iframe {
-      width: 100%;
-      height: 330px;
-      border: 0;
-      border-radius: 4px;
-    }
-
-    footer {
-      background: #02060b;
-      color: #aaa;
-      text-align: center;
-      padding: 32px 7%;
-      font-size: 14px;
-    }
-
-    footer span {
-      color: var(--dourado);
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      background: #25d366;
-      color: #fff;
-      padding: 15px 22px;
-      border-radius: 50px;
-      font-weight: bold;
-      z-index: 999;
-      box-shadow: 0 10px 25px rgba(0,0,0,.3);
-      animation: pulseWhats 2.4s infinite;
-    }
-
-    @keyframes pulseWhats {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(45px);
-      transition: 1s;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 900px) {
-      header {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 14px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding-top: 190px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-      }
-
-      .buttons {
-        justify-content: center;
-      }
-
-      .hero-img img {
-        height: 420px;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo.png" alt="Ótica Lenses">
-
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#contato">Contato</a>
-    <a class="btn-header" href="https://wa.me/551194128819" target="_blank">Agendar</a>
-  </nav>
+<img src="logo.png">
+<nav>
+<a href="#inicio">Início</a>
+<a href="#sobre">Sobre</a>
+<a href="#servicos">Serviços</a>
+<a href="#contato">Contato</a>
+</nav>
 </header>
 
 <section class="hero" id="inicio">
-  <div class="hero-text">
-    <img src="logo-nova.jpg" alt="Ótica Lenses">
-    <span class="tag">Ótica em Bragança Paulista</span>
+<div>
+<h1>Enxergue melhor com <span>qualidade e estilo</span></h1>
+<p>Especialistas em lentes multifocais e lentes de contato em Bragança Paulista.</p>
 
-    <h1>Especialistas em <span>lentes multifocais</span> e contato</h1>
-
-    <p>
-      Atendimento personalizado, qualidade e tecnologia para cuidar da sua visão.
-      Na Ótica Lenses, você encontra conforto, estilo e confiança em cada detalhe.
-    </p>
-
-    <div class="buttons">
-      <a class="btn-primary" href="https://wa.me/551194128819" target="_blank">Agendar atendimento</a>
-      <a class="btn-outline" href="https://www.instagram.com/oticalenses/" target="_blank">Ver Instagram</a>
-    </div>
-  </div>
-
-  <div class="hero-img">
-    <img src="andrea.jpg" alt="Cliente usando óculos">
-  </div>
-</section>
-
-<div class="numbers">
-  <div class="number">
-    <h3>+5000</h3>
-    <p>Clientes satisfeitos</p>
-  </div>
-
-  <div class="number">
-    <h3>+20</h3>
-    <p>Marcas parceiras</p>
-  </div>
-
-  <div class="number">
-    <h3>100%</h3>
-    <p>Atendimento personalizado</p>
-  </div>
-
-  <div class="number">
-    <h3>📍</h3>
-    <p>Bragança Paulista - SP</p>
-  </div>
+<a class="btn" href="https://wa.me/551194128819">WhatsApp</a>
+<a class="btn" href="https://www.instagram.com/oticalenses/">Instagram</a>
 </div>
 
-<section class="about reveal" id="sobre">
-  <div>
-    <img src="otica-dentro.jpg" alt="Interior da Ótica Lenses">
-  </div>
-
-  <div class="about-text">
-    <span class="tag">Quem somos</span>
-    <h2>Perfeita para a sua visão</h2>
-
-    <p>
-      A Ótica Lenses oferece soluções completas para quem busca enxergar melhor com conforto,
-      segurança e elegância.
-    </p>
-
-    <p>
-      Com especialidade em lentes multifocais e lentes de contato, trabalhamos para entregar
-      uma experiência de atendimento cuidadosa, moderna e personalizada.
-    </p>
-
-    <p>
-      Nosso objetivo é ajudar cada cliente a encontrar a melhor solução visual, unindo qualidade,
-      beleza e confiança.
-    </p>
-
-    <a class="btn-primary" href="https://wa.me/551194128819" target="_blank">Fale conosco</a>
-  </div>
+<div>
+<img src="andrea.jpg">
+</div>
 </section>
 
-<section class="services reveal" id="servicos">
-  <div class="title">
-    <span>Nossos serviços</span>
-    <h2>Soluções completas</h2>
-  </div>
+<div class="marquee">
+<div class="marquee-content">
+<span>Ótica Lenses</span>
+<span>Lentes multifocais</span>
+<span>Lentes de contato</span>
+<span>Óculos de grau</span>
+<span>Atendimento personalizado</span>
+<span>Bragança Paulista</span>
+</div>
+</div>
 
-  <div class="service-grid">
-    <div class="service-card">
-      <h3>Lentes multifocais</h3>
-      <p>Conforto para enxergar de perto, longe e em distâncias intermediárias.</p>
-    </div>
+<section id="sobre">
+<div class="title"><h2>Sobre a Ótica</h2></div>
 
-    <div class="service-card">
-      <h3>Lentes de contato</h3>
-      <p>Opções práticas e confortáveis para quem busca liberdade no dia a dia.</p>
-    </div>
+<div class="about">
+<img src="otica-dentro.jpg">
 
-    <div class="service-card">
-      <h3>Óculos de grau</h3>
-      <p>Armações modernas e lentes de qualidade para unir necessidade e estilo.</p>
-    </div>
-
-    <div class="service-card">
-      <h3>Óculos de sol</h3>
-      <p>Proteção, personalidade e sofisticação para todos os momentos.</p>
-    </div>
-
-    <div class="service-card">
-      <h3>Ajustes e manutenção</h3>
-      <p>Ajustes, limpeza e pequenos reparos para manter seus óculos confortáveis.</p>
-    </div>
-
-    <div class="service-card">
-      <h3>Atendimento personalizado</h3>
-      <p>Orientação para escolher lentes e armações ideais para sua rotina.</p>
-    </div>
-  </div>
+<div>
+<p>A Ótica Lenses oferece soluções completas para sua visão com conforto, qualidade e estilo.</p>
+<p>Especializada em lentes multifocais e lentes de contato, com atendimento personalizado.</p>
+</div>
+</div>
 </section>
 
-<section class="banner reveal">
-  <h2>Visite a Ótica Lenses</h2>
-  <p>
-    Estamos na R. João Franco, 915 - Jardim São Cristóvão, em Bragança Paulista.
-    Venha conhecer nossa loja e escolher a melhor solução para sua visão.
-  </p>
-  <a class="btn-primary" href="https://wa.me/551194128819" target="_blank">Chamar no WhatsApp</a>
+<section id="servicos">
+<div class="title"><h2>Serviços</h2></div>
+
+<div class="services">
+<div class="card"><h3>Lentes multifocais</h3></div>
+<div class="card"><h3>Lentes de contato</h3></div>
+<div class="card"><h3>Óculos de grau</h3></div>
+<div class="card"><h3>Óculos de sol</h3></div>
+<div class="card"><h3>Ajustes</h3></div>
+<div class="card"><h3>Atendimento personalizado</h3></div>
+</div>
 </section>
 
-<section class="gallery reveal" id="galeria">
-  <div class="title">
-    <span>Galeria</span>
-    <h2>Conheça nossa estrutura</h2>
-  </div>
+<section>
+<div class="title"><h2>Galeria</h2></div>
 
-  <div class="gallery-grid">
-    <img src="andrea.jpg" alt="Óculos feminino">
-    <img src="patrick.jpg" alt="Óculos masculino">
-    <img src="fachada-nova.jpg" alt="Fachada da loja">
-    <img src="otica-dentro.jpg" alt="Interior da loja">
-  </div>
+<div class="gallery">
+<img src="andrea.jpg">
+<img src="patrick.jpg">
+<img src="fachada-nova.jpg">
+<img src="otica-dentro.jpg">
+</div>
 </section>
 
-<section class="contact reveal" id="contato">
-  <div class="title">
-    <span>Contato</span>
-    <h2>Agende seu atendimento</h2>
-  </div>
+<section class="contact" id="contato">
+<div class="title"><h2>Contato</h2></div>
 
-  <div class="contact-grid">
-    <div class="contact-box">
-      <img src="logo-nova.jpg" alt="Ótica Lenses">
-      <p>Especialistas em lentes multifocais e lentes de contato.</p>
-      <p>Qualidade, tecnologia e atendimento para transformar sua experiência visual.</p>
-    </div>
+<p><strong>Endereço:</strong> R. João Franco, 915</p>
+<p><strong>WhatsApp:</strong> (11) 94128-8190</p>
+<p><strong>Instagram:</strong> @oticalenses</p>
+<p><strong>Email:</strong> lensesotica@gmail.com</p>
 
-    <div class="contact-box">
-      <h3>Informações</h3>
-      <p><strong>Endereço:</strong><br>R. João Franco, 915 - Jardim São Cristóvão, Bragança Paulista - SP</p>
-      <p><strong>WhatsApp:</strong><br>(11) 94128-8190</p>
-      <p><strong>Instagram:</strong><br>@oticalenses</p>
-
-      <h3>Horário</h3>
-      <p>Segunda a sexta: 09:00 às 18:00</p>
-      <p>Sábado: 08:00 às 13:00</p>
-      <p>Domingo: Fechado</p>
-    </div>
-
-    <div class="contact-box">
-      <iframe src="https://www.google.com/maps?q=R.%20Jo%C3%A3o%20Franco,%20915%20-%20Jardim%20S%C3%B3o%20Crist%C3%B3v%C3%A3o,%20Bragan%C3%A7a%20Paulista%20-%20SP&output=embed"></iframe>
-    </div>
-  </div>
 </section>
 
 <footer>
-  <p>© 2026 Ótica Lenses - Todos os direitos reservados.</p>
-  <p>Site desenvolvido por <span>DEVNIX</span></p>
+© 2026 Ótica Lenses
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/551194128819" target="_blank">
-  💬 Fale conosco
-</a>
-
-<script>
-  const reveals = document.querySelectorAll(".reveal");
-
-  function revealOnScroll() {
-    reveals.forEach((item) => {
-      const windowHeight = window.innerHeight;
-      const elementTop = item.getBoundingClientRect().top;
-
-      if (elementTop < windowHeight - 100) {
-        item.classList.add("active");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
-</script>
+<a class="whats" href="https://wa.me/551194128819">WhatsApp</a>
 
 </body>
 </html>
